@@ -30,8 +30,6 @@ export default class Play extends React.Component<
   };
   private rules: Rule[];
   private drawnCardCounts: any = {};
-  private crownAnimation: any;
-  private animationNode: React.ReactNode;
 
   componentWillMount() {
     const rules = getRules();
@@ -67,7 +65,6 @@ export default class Play extends React.Component<
       rule.isKingCard
     ) {
       // if the king card is drawn MAX_CARDS_PER_RULE times the game finishes
-      // this.crownAnimation.play();
       this.setState({rule, gameOver: true});
       return;
     }

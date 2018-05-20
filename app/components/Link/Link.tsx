@@ -11,7 +11,7 @@ interface Props {
 }
 
 export default ({href, title, children, onClick}: Props) => {
-  const isExternal = /http(s)?\:\/\//.test(href || '');
+  const isExternal = /http(s)?:\/\//.test(href || '');
 
   if (isExternal || !href) {
     return (

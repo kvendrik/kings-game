@@ -48,7 +48,7 @@ export default class TextField extends React.Component<Props, State> {
 
     const dataProps: any = {};
     Object.keys(this.props)
-      .filter(key => /^data\-/.test(key))
+      .filter(key => /^data-/.test(key))
       .forEach(key => {
         dataProps[key] = (this.props as any)[key];
       });
