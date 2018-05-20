@@ -1,0 +1,84 @@
+[
+  {
+    "name": "Waterfall",
+    "description":
+      "To perform a waterfall, each player starts drinking their beverage at the same time as the person to their left. No player can stop drinking until the player before them stops."
+  },
+  {
+    "name": "2 for you",
+    "description":
+      "You point at two persons and tell them to drink. You can also tell one person to take two drinks."
+  },
+  {
+    "name": "Pointing",
+    "description":
+      "Everyone puts their hands up. After 5 seconds everyone points at a random player. Every player who was pointed at drinks an equal amount of sips to the amount of players who pointed at them."
+  },
+  {
+    "name": "Give 2 Take 2",
+    "description": "You give out two drinks, and take two yourself."
+  },
+  {
+    "name": "Fives Guys",
+    "description": "All guys drink"
+  },
+  {
+    "name": "Six's chicks",
+    "description": "All girls drink"
+  },
+  {
+    "name": "Rise of the queen",
+    "description":
+      "Until someone else draws this card: you can put your hand up at a random time and yell 'rise of the queen'. All players then need to do the same thing. The last player to put their hand up needs to drink."
+  },
+  {
+    "name": "Drinking Buddy",
+    "description":
+      "Choose a person to be your drinking budy and they drink when you drink for the rest of the game."
+  },
+  {
+    "name": "Rhyme Time",
+    "description":
+      "'Nine is Rhyme'. You say a word, and the person to your right has to say a word that rhymes. This continues around the table until someone cannot think of a word. This person must drink. The same word may not be used twice."
+  },
+  {
+    "name": "Categories",
+    "description":
+      "You come up with a category of things, and the person to your right must come up with something that falls within that category. This goes on around the table until someone can't come up with anything. This person must drink."
+  },
+  {
+    "name": "Quizmaster",
+    "description":
+      "Until someone else draws this card: If anyone answers any of your questions they need to drink."
+  },
+  {
+    "name": "Make a rule",
+    "description":
+      "You can make a rule. When a player doesn't follow the rule they need to chug their drink."
+  },
+  {
+    "name": "Cancel a rule",
+    "description": "You may cancel one of the existing rules."
+  },
+  {
+    "name": "Tabling",
+    "description":
+      "Do the table of multiplication 7. E.g. you start at 7 then the person next to you says 14 and so on. The catch is that instead of any number that can be multiplied by 7 like 14, 21, 28 etc the player says 'teacher' instead of the number. This also goes for any number with 7 in it like 27, 37, 47 etc."
+  },
+  {
+    "name": "Snake Eyes",
+    "description":
+      "Until someone else draws this card: If a player looks you in the eyes they need to drink."
+  },
+  {
+    "name": "Change Direction",
+    "description":
+      "This card changes the direction the game is played in. E.g. If it was clockwise before it now is couter-clockwise."
+  },
+  {
+    "isKingCard": true,
+    "name": "Kings Cup!",
+    "description":
+      "You can add an ingredient to the drink in the middle of the table. The player who draws the last king chugs the drink."
+  }
+]

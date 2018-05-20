@@ -1,0 +1,24 @@
+{
+  "extends": ["airbnb", "plugin:prettier/recommended"],
+  "parser": "typescript-eslint-parser",
+  "rules": {
+    "no-undef": "off",
+    "max-len": "off",
+    "no-multi-str": "off",
+    "object-curly-spacing": ["error", "never"],
+    "react/jsx-filename-extension": "off",
+    "import/no-unresolved": "off",
+    "import/extensions": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "jsx-a11y/label-has-for": "off",
+    "react/no-unescaped-entities": "off",
+    "no-use-before-define": "off",
+    "no-restricted-globals": "off",
+    "react/sort-comp": "off",
+    "no-restricted-syntax": "off"
+  },
+  "env": {
+    "browser": true,
+    "jest": true
+  }
+}

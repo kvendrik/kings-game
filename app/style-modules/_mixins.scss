@@ -1,0 +1,5 @@
+@import './variables';
+
+@mixin main-font {
+  font: $weight-primary $size-m $family-primary;
+}

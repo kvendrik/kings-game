@@ -1,0 +1,30 @@
+.App {
+  width: 95%;
+  max-width: 400px;
+  margin: 0 auto;
+  position: relative;
+  margin-top: 5rem;
+  transform: translateY(0);
+}
+
+.PageEnter {
+  opacity: 0.01;
+  transform: translateX(1.5rem);
+}
+
+.PageEnterActive {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.25s ease-in;
+}
+
+.PageExit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.PageExitActive {
+  opacity: 0.01;
+  transition: all 0.25s ease-in;
+  transform: translateX(-1.5rem);
+}

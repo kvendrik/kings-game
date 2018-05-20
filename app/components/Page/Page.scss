@@ -1,0 +1,9 @@
+@import 'mixins';
+
+.Page {
+  min-width: 100%;
+  @include main-font;
+  color: $color-dark;
+  position: absolute;
+  margin-bottom: 3rem;
+}
