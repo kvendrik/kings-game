@@ -40,6 +40,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'index-template.html',
+      hash: true,
     }),
   ],
   module: {
