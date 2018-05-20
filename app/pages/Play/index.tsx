@@ -18,6 +18,7 @@ export default class Play extends React.Component<
     rule: Rule;
     lastDrawnRuleIndex: number;
     gameOver: boolean;
+    cardsLeft: number;
   }
 > {
   state = {
@@ -27,6 +28,7 @@ export default class Play extends React.Component<
     },
     lastDrawnRuleIndex: -1,
     gameOver: false,
+    cardsLeft: 0,
   };
   private rules: Rule[];
   private drawnCardCounts: any = {};
@@ -48,7 +50,37 @@ export default class Play extends React.Component<
     const randomIndex = Math.round(Math.random() * (rules.length - 1) + 0);
     const rule = rules[randomIndex];
 
-    if (randomIndex === lastDrawnRuleIndex) {
+    const cardsLeft = rules.reduce((currentCardsLeft, {name}: Rule) => {
+      const timesDrawn = this.drawnCardCounts[name] || 0;
+      const left = MAX_CARDS_PER_RULE - timesDrawn;
+      return currentCardsLeft + left;
+    }, 0);
+
+    const uniqueCardNames = rules.reduce((currentCardsNames, {name}: Rule) => {
+      const timesDrawn = this.drawnCardCounts[name] || 0;
+      return timesDrawn !== MAX_CARDS_PER_RULE
+        ? [name, ...currentCardsNames]
+        : currentCardsNames;
+    }, []);
+
+    if (
+      this.drawnCardCounts[rule.name] === MAX_CARDS_PER_RULE - 1 &&
+      rule.isKingCard
+    ) {
+      // if the king card is drawn MAX_CARDS_PER_RULE times the game finishes
+      this.setState({rule, gameOver: true, cardsLeft});
+      return;
+    }
+
+    if (this.drawnCardCounts[rule.name] >= MAX_CARDS_PER_RULE) {
+      // all cards can only be drawn a maximum of MAX_CARDS_PER_RULE times
+      const newRules = rules.filter(({name}) => name !== rule.name);
+      this.rules = newRules;
+      this.drawCard();
+      return;
+    }
+
+    if (randomIndex === lastDrawnRuleIndex && uniqueCardNames.length > 1) {
       // no double cards
       this.drawCard();
       return;
@@ -59,27 +91,11 @@ export default class Play extends React.Component<
     }
 
     this.drawnCardCounts[rule.name] += 1;
-
-    if (
-      this.drawnCardCounts[rule.name] === MAX_CARDS_PER_RULE &&
-      rule.isKingCard
-    ) {
-      // if the king card is drawn MAX_CARDS_PER_RULE times the game finishes
-      this.setState({rule, gameOver: true});
-      return;
-    }
-
-    if (this.drawnCardCounts[rule.name] > MAX_CARDS_PER_RULE) {
-      // all cards can only be drawn a maximum of MAX_CARDS_PER_RULE times
-      this.drawCard();
-      return;
-    }
-
-    this.setState({rule, lastDrawnRuleIndex: randomIndex});
+    this.setState({rule, lastDrawnRuleIndex: randomIndex, cardsLeft});
   }
 
   render() {
-    const {rule, gameOver} = this.state;
+    const {rule, gameOver, cardsLeft} = this.state;
 
     if (gameOver) {
       return (
@@ -120,6 +136,8 @@ export default class Play extends React.Component<
             }{' '}
             times.
           </small>
+          <br />
+          <small>There are {cardsLeft} cards left in the deck.</small>
         </Row>
         <Row>
           <Button onClick={this.drawCard}>Draw a card</Button>
