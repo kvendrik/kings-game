@@ -7,7 +7,7 @@ import {Row} from 'Components/Grid';
 import Lottie from 'Components/Lottie';
 import Heading from 'Components/Heading';
 import Link from 'Components/Link';
-import {Rule, getRules} from './Rules';
+import {Rule, getRules, MAX_CARDS_PER_RULE} from '../Rules';
 import * as lottieCrown from './lottie-crown.json';
 
 export default class Play extends React.Component<
@@ -62,15 +62,18 @@ export default class Play extends React.Component<
 
     this.drawnCardCounts[rule.name] += 1;
 
-    if (this.drawnCardCounts[rule.name] === 4 && rule.isKingCard) {
-      // if the king card is drawn 4 times the game finishes
+    if (
+      this.drawnCardCounts[rule.name] === MAX_CARDS_PER_RULE &&
+      rule.isKingCard
+    ) {
+      // if the king card is drawn MAX_CARDS_PER_RULE times the game finishes
       // this.crownAnimation.play();
       this.setState({rule, gameOver: true});
       return;
     }
 
-    if (this.drawnCardCounts[rule.name] > 4) {
-      // all cards can only be drawn a maximum of 4 times
+    if (this.drawnCardCounts[rule.name] > MAX_CARDS_PER_RULE) {
+      // all cards can only be drawn a maximum of MAX_CARDS_PER_RULE times
       this.drawCard();
       return;
     }
@@ -115,18 +118,17 @@ export default class Play extends React.Component<
             {rule.description}
           </Heading>
           <small>
-            This card has been drawn {this.drawnCardCounts[rule.name]}/4 times.
+            This card has been drawn {this.drawnCardCounts[rule.name]}/{
+              MAX_CARDS_PER_RULE
+            }{' '}
+            times.
           </small>
         </Row>
         <Row>
           <Button onClick={this.drawCard}>Draw a card</Button>
         </Row>
         <div className="text-center">
-          <small
-            style={{
-              marginTop: '5rem',
-            }}
-          >
+          <small>
             <Link href="/">End this game</Link>
           </small>
         </div>

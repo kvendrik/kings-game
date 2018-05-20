@@ -16,6 +16,7 @@ export interface Rule {
 }
 
 const RULES_STORAGE_KEY = 'kings-game__rules';
+export const MAX_CARDS_PER_RULE = 4;
 
 export function getRules(): Rule[] | null {
   const rulesString = localStorage[RULES_STORAGE_KEY];
@@ -41,8 +42,8 @@ const Rule = ({name, description, isKingCard}: Rule) => (
     {isKingCard && (
       <Row>
         <small>
-          This is the King Card. There are only 4 and when they are all drawn
-          the game ends.
+          This is the King Card. There are only {MAX_CARDS_PER_RULE} and when
+          they are all drawn the game ends.
         </small>
       </Row>
     )}
