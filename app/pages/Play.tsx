@@ -7,18 +7,10 @@ import {Row} from 'Components/Grid';
 import Lottie from 'Components/Lottie';
 import Heading from 'Components/Heading';
 import Link from 'Components/Link';
-import {Rule} from './Rules';
+import {Rule, getRules} from './Rules';
 import * as lottieCrown from './lottie-crown.json';
 
-function getRules(): Rule[] | null {
-  const rulesString = localStorage['kings-game__rules'];
-  if (!rulesString) {
-    return null;
-  }
-  return JSON.parse(rulesString);
-}
-
-export default class Rules extends React.Component<
+export default class Play extends React.Component<
   {
     history: any;
   },
@@ -39,7 +31,7 @@ export default class Rules extends React.Component<
   private rules: Rule[];
   private drawnCardCounts: any = {};
   private crownAnimation: any;
-  private animationNode: any;
+  private animationNode: React.ReactNode;
 
   componentWillMount() {
     const rules = getRules();
@@ -103,7 +95,8 @@ export default class Rules extends React.Component<
               <small>YOU DREW</small>
               <Heading size="extra-large">The last king!</Heading>
               <Heading size="large" subdued>
-                King card rules: {rule.description}
+                <div>{rule.name}</div>
+                {rule.description}
               </Heading>
             </Row>
             <Button href="/rules">Start a new game</Button>
@@ -125,17 +118,18 @@ export default class Rules extends React.Component<
             This card has been drawn {this.drawnCardCounts[rule.name]}/4 times.
           </small>
         </Row>
-        <Button onClick={this.drawCard}>Draw a card</Button>
-        <small
-          style={{
-            display: 'block',
-            width: '100%',
-            textAlign: 'center',
-            marginTop: '5rem',
-          }}
-        >
-          <Link href="/">End this game</Link>
-        </small>
+        <Row>
+          <Button onClick={this.drawCard}>Draw a card</Button>
+        </Row>
+        <div className="text-center">
+          <small
+            style={{
+              marginTop: '5rem',
+            }}
+          >
+            <Link href="/">End this game</Link>
+          </small>
+        </div>
       </Page>
     );
   }

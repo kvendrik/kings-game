@@ -4,17 +4,24 @@ import {Link} from 'react-router-dom';
 import * as styles from './Link.scss';
 
 interface Props {
-  href: string;
   children: React.ReactNode;
+  href?: string;
   title?: string;
+  onClick?: any;
 }
 
-export default ({href, title, children}: Props) => {
-  const isExternal = /http(s)?\:\/\//.test(href);
+export default ({href, title, children, onClick}: Props) => {
+  const isExternal = /http(s)?\:\/\//.test(href || '');
 
-  if (isExternal) {
+  if (isExternal || !href) {
     return (
-      <a className={styles.Link} href={href} title={title} target="_blank">
+      <a
+        className={styles.Link}
+        href={href}
+        title={title}
+        target="_blank"
+        onClick={onClick}
+      >
         {children}
       </a>
     );

@@ -28,3 +28,8 @@
   transition: all 0.25s ease-in;
   transform: translateX(-1.5rem);
 }
+
+:global .text-center {
+  width: 100%;
+  text-align: center;
+}

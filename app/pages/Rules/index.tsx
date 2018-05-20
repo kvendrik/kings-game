@@ -6,12 +6,23 @@ import {Row} from 'Components/Grid';
 import Heading from 'Components/Heading';
 import TextField from 'Components/TextField';
 import Break from 'Components/Break';
+import Link from 'Components/Link';
 import * as defaultRules from './defaultRules.json';
 
 export interface Rule {
   name: string;
   description: string;
   isKingCard?: boolean;
+}
+
+const RULES_STORAGE_KEY = 'kings-game__rules';
+
+export function getRules(): Rule[] | null {
+  const rulesString = localStorage[RULES_STORAGE_KEY];
+  if (!rulesString) {
+    return defaultRules as any;
+  }
+  return JSON.parse(rulesString);
 }
 
 const Rule = ({name, description, isKingCard}: Rule) => (
@@ -39,13 +50,24 @@ const Rule = ({name, description, isKingCard}: Rule) => (
   </Row>
 );
 
-export default class Rules extends React.Component<{
-  history: any;
-}> {
-  private rules: Rule[];
-  private kingCardRule: Rule[];
+function setRules(rules: Rule[]) {
+  localStorage[RULES_STORAGE_KEY] = JSON.stringify(rules);
+}
 
+export default class Rules extends React.Component<
+  {
+    history: any;
+  },
+  {
+    rules: React.ReactNode;
+    kingCardRule: React.ReactNode;
+  }
+> {
   componentWillMount() {
+    this.loadRules();
+  }
+
+  loadRules() {
     const mapNodes = ({name, description, isKingCard}: Rule, index: number) => (
       <div key={name}>
         <Heading size="medium">
@@ -55,16 +77,17 @@ export default class Rules extends React.Component<{
       </div>
     );
 
-    const rulesNodes = (defaultRules as any)
+    const rules = getRules();
+
+    const rulesNodes = (rules as any)
       .filter(({isKingCard}: Rule) => !isKingCard)
       .map(mapNodes);
 
-    const kingCardRuleNode = (defaultRules as any)
+    const kingCardRuleNode = (rules as any)
       .filter(({isKingCard}: Rule) => isKingCard)
       .map(mapNodes);
 
-    this.rules = rulesNodes;
-    this.kingCardRule = kingCardRuleNode;
+    this.setState({rules: rulesNodes, kingCardRule: kingCardRuleNode});
   }
 
   @Bind()
@@ -86,12 +109,20 @@ export default class Rules extends React.Component<{
       rules.push(rule);
     });
 
-    localStorage['kings-game__rules'] = JSON.stringify(rules);
+    setRules(rules);
     this.props.history.push('/play');
   }
 
+  @Bind()
+  resetRules() {
+    setRules(defaultRules as any);
+    window.localStorage.removeItem(RULES_STORAGE_KEY);
+    window.alert('The rules have been reset.');
+    this.loadRules();
+  }
+
   render() {
-    const {rules, kingCardRule} = this;
+    const {rules, kingCardRule} = this.state;
 
     return (
       <Page>
@@ -108,7 +139,14 @@ export default class Rules extends React.Component<{
         <form onSubmit={this.onSubmit}>
           {kingCardRule}
           {rules}
-          <Button type="submit">Start game</Button>
+          <Row>
+            <Button type="submit">Start game</Button>
+          </Row>
+          <div className="text-center">
+            <small>
+              <Link onClick={this.resetRules}>Reset the rules</Link>
+            </small>
+          </div>
         </form>
       </Page>
     );

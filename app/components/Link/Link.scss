@@ -2,4 +2,7 @@
 
 .Link {
   color: $color-accent;
+  cursor: pointer;
+  font-weight: $weight-primary;
+  text-decoration: underline;
 }
