@@ -1,5 +1,5 @@
 export function welcome() {
-  return '/welcome';
+  return '/';
 }
 
 export function rules() {
