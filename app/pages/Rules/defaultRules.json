@@ -62,7 +62,7 @@
       "You may cancel one of the existing rules that was made using the 'Make a rule' card."
   },
   {
-    "name": "Counting",
+    "name": "Tabling",
     "description":
       "As a group you count until someone messes up. E.g. you start at 1 then the person next to you says '2' and so on. The catch is that instead of any number that can be multiplied by 7 like 14, 21, 28 etc the player says 'teacher' instead of the number. This also goes for any number with 7 in it like 27, 37, 47 etc."
   },
