@@ -7,6 +7,7 @@ import {
   withRouter,
 } from 'react-router-dom';
 import {CSSTransition, TransitionGroup} from 'react-transition-group';
+import * as routes from 'Utils/routes';
 
 import * as styles from './App.scss';
 
@@ -28,9 +29,9 @@ const App = withRouter(({location}) => (
         timeout={500}
       >
         <Switch location={location}>
-          <Route exact path="/" component={Welcome} />
-          <Route path="/rules" component={Rules} />
-          <Route path="/play" component={Play} />
+          <Route exact path={routes.welcome()} component={Welcome} />
+          <Route path={routes.rules()} component={Rules} />
+          <Route path={routes.play()} component={Play} />
         </Switch>
       </CSSTransition>
     </TransitionGroup>

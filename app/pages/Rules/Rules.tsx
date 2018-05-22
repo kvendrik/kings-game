@@ -7,7 +7,7 @@ import Heading from 'Components/Heading';
 import TextField from 'Components/TextField';
 import Break from 'Components/Break';
 import Link from 'Components/Link';
-import routes from 'Utils/routes';
+import * as routes from 'Utils/routes';
 import * as defaultRules from './defaultRules.json';
 
 export interface Rule {
@@ -112,7 +112,7 @@ export default class Rules extends React.Component<
     });
 
     setRules(rules);
-    this.props.history.push(routes.play);
+    this.props.history.push(routes.play());
   }
 
   @Bind()

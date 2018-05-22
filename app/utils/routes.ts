@@ -1,5 +1,11 @@
-export default {
-  welcome: '/',
-  rules: '/rules',
-  play: '/play',
-};
+export function welcome() {
+  return '/welcome';
+}
+
+export function rules() {
+  return '/rules';
+}
+
+export function play() {
+  return '/play';
+}

@@ -7,7 +7,7 @@ import {Row} from 'Components/Grid';
 import Lottie from 'Components/Lottie';
 import Heading from 'Components/Heading';
 import Link from 'Components/Link';
-import routes from 'Utils/routes';
+import * as routes from 'Utils/routes';
 import {Rule, getRules, MAX_CARDS_PER_RULE} from '../Rules';
 import * as lottieCrown from './lottie-crown.json';
 
@@ -37,7 +37,7 @@ export default class Play extends React.Component<
   componentWillMount() {
     const rules = getRules();
     if (!rules) {
-      this.props.history.push(routes.welcome);
+      this.props.history.push(routes.welcome());
       return;
     }
     this.rules = rules;
@@ -116,7 +116,7 @@ export default class Play extends React.Component<
                 {rule.description}
               </Heading>
             </Row>
-            <Button href={routes.rules}>Start a new game</Button>
+            <Button href={routes.rules()}>Start a new game</Button>
           </div>
         </Page>
       );
@@ -145,7 +145,7 @@ export default class Play extends React.Component<
         </Row>
         <div className="text-center">
           <small>
-            <Link href={routes.welcome}>End this game</Link>
+            <Link href={routes.welcome()}>End this game</Link>
           </small>
         </div>
       </Page>
