@@ -2,7 +2,7 @@
   {
     "name": "Waterfall",
     "description":
-      "To perform a waterfall, each player starts drinking their beverage at the same time as the person to their left. No player can stop drinking until the player before them stops."
+      "To perform a waterfall, each player starts drinking their beverage at the same time as the person before them. No player can stop drinking until the player before them stops."
   },
   {
     "name": "2 for you",
@@ -12,7 +12,7 @@
   {
     "name": "Pointing",
     "description":
-      "Everyone puts their hands up. After 5 seconds everyone points at a random player. Every player who was pointed at drinks an equal amount of sips to the amount of players who pointed at them."
+      "Everyone puts their hands up. After 5 seconds everyone points at a random player. Every player who was pointed at drinks an equal amount of drinks to the amount of players who pointed at them."
   },
   {
     "name": "Give 2 Take 2",
@@ -34,17 +34,17 @@
   {
     "name": "Drinking Buddy",
     "description":
-      "Choose a person to be your drinking budy and they drink when you drink for the rest of the game."
+      "Choose a person to be your drinking buddy and they drink when you drink for the rest of the game."
   },
   {
     "name": "Rhyme Time",
     "description":
-      "'Nine is Rhyme'. You say a word, and the person to your right has to say a word that rhymes. This continues around the table until someone cannot think of a word. This person must drink. The same word may not be used twice."
+      "'Nine is Rhyme'. You say a word, and the person next to you has to say a word that rhymes. This continues around the table until someone cannot think of a word. This person must drink. The same word may not be used twice."
   },
   {
     "name": "Categories",
     "description":
-      "You come up with a category of things, and the person to your right must come up with something that falls within that category. This goes on around the table until someone can't come up with anything. This person must drink."
+      "You come up with a category of things, and the person next to you must come up with something that falls within that category. This goes on around the table until someone can't come up with anything. This person must drink."
   },
   {
     "name": "Quizmaster",
@@ -58,12 +58,13 @@
   },
   {
     "name": "Cancel a rule",
-    "description": "You may cancel one of the existing rules."
+    "description":
+      "You may cancel one of the existing rules that was made using the 'Make a rule' card."
   },
   {
-    "name": "Tabling",
+    "name": "Counting",
     "description":
-      "Do the table of multiplication 7. E.g. you start at 7 then the person next to you says 14 and so on. The catch is that instead of any number that can be multiplied by 7 like 14, 21, 28 etc the player says 'teacher' instead of the number. This also goes for any number with 7 in it like 27, 37, 47 etc."
+      "As a group you count until someone messes up. E.g. you start at 1 then the person next to you says '2' and so on. The catch is that instead of any number that can be multiplied by 7 like 14, 21, 28 etc the player says 'teacher' instead of the number. This also goes for any number with 7 in it like 27, 37, 47 etc."
   },
   {
     "name": "Snake Eyes",
