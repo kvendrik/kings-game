@@ -3,6 +3,7 @@ import Page from 'Components/Page';
 import Button from 'Components/Button';
 import Link from 'Components/Link';
 import {Row} from 'Components/Grid';
+import routes from 'Utils/routes';
 import Heading from 'Components/Heading';
 
 export default () => (
@@ -15,6 +16,6 @@ export default () => (
         when you forgot your playing cards.
       </Heading>
     </Row>
-    <Button href="/rules">Start new game</Button>
+    <Button href={routes.rules}>Start new game</Button>
   </Page>
 );

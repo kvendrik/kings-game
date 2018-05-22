@@ -1,21 +1,14 @@
 module.exports = {
-  moduleDirectories: [
-    'node_modules',
-  ],
+  moduleDirectories: ['node_modules'],
   setupTestFrameworkScriptFile: '<rootDir>/testsSetup.js',
   moduleNameMapper: {
     '\\.(scss|css)$': 'identity-obj-proxy',
+    'Components/(.*)': '<rootDir>/app/components/$1',
+    'Utils/(.*)': '<rootDir>/app/utils/$1',
   },
   transform: {
-    "^.+\\.tsx?$": "ts-jest"
+    '^.+\\.tsx?$': 'ts-jest',
   },
-  testRegex: "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-  moduleFileExtensions: [
-    "ts",
-    "tsx",
-    "js",
-    "jsx",
-    "json",
-    "node"
-  ]
+  testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 };
