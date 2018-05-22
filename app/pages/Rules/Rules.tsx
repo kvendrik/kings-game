@@ -16,11 +16,11 @@ export interface Rule {
   isKingCard?: boolean;
 }
 
-const RULES_STORAGE_KEY = 'kings-game__rules';
+export const RULES_STORAGE_KEY = 'kings-game__rules';
 export const MAX_CARDS_PER_RULE = 4;
 
 export function getRules(): Rule[] | null {
-  const rulesString = localStorage[RULES_STORAGE_KEY];
+  const rulesString = window.localStorage[RULES_STORAGE_KEY];
   if (!rulesString) {
     return defaultRules as any;
   }
@@ -53,7 +53,8 @@ const Rule = ({name, description, isKingCard}: Rule) => (
 );
 
 function setRules(rules: Rule[]) {
-  localStorage[RULES_STORAGE_KEY] = JSON.stringify(rules);
+  console.log('SET', rules);
+  window.localStorage[RULES_STORAGE_KEY] = JSON.stringify(rules);
 }
 
 export default class Rules extends React.Component<
