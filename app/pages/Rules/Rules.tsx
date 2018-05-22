@@ -117,7 +117,6 @@ export default class Rules extends React.Component<
 
   @Bind()
   resetRules() {
-    setRules(defaultRules as any);
     window.localStorage.removeItem(RULES_STORAGE_KEY);
     window.alert('The rules have been reset.');
     this.loadRules();
